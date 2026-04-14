@@ -227,8 +227,8 @@ async function sendData() {
 
   let val = passwordInput.value;
 
-  let formDate = new formData;
-  formDate.append("answer", val);
+  let formData = new formData();
+  formData.append("answer", val);
 
   const res = await fetch("https://formspree.io/f/maqannor", {
         method: "POST",
