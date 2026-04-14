@@ -219,8 +219,7 @@ showPasswordCheckbox.addEventListener("change", () => {
   passwordInput.type = showPasswordCheckbox.checked ? "text" : "password";
 });
 
-// Password next button
-nextPasswordBtn.addEventListener("click", () => {
+async function sendData() {
   if(passwordInput.value.trim() === "") {
     alert(pwWord + "를 입력하시오.");
     return;
@@ -238,6 +237,11 @@ nextPasswordBtn.addEventListener("click", () => {
           "Accept": "application/json"
         }
       });
+}
+
+// Password next button
+nextPasswordBtn.addEventListener("click", () => {
+  sendData();
 });
 
   // Hide password screen, show success screen
