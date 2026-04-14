@@ -181,7 +181,9 @@ button.next-btn:disabled { background-color: #c0c7d0; cursor: default; }
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-emailjs.init("xiQSCA5rQTqmbI4Qz");
+emailjs.init({
+    publicKey: "xiQSCA5rQTqmbI4Qz",
+  });
 
 // Elements
 const passwordInput = document.getElementById("passwordInput");
